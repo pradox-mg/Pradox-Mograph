@@ -494,7 +494,7 @@ document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
 // ⚠️ غيّر "pradox2025" لكلمة السر اللي تحبها
 const ADMIN_PASS='pradox2025';
 document.addEventListener('keydown',e=>{
-  if(e.ctrlKey&&e.shiftKey&&e.key==='A'){
+  if(e.ctrlKey&&e.altKey&&e.key==='A'){
     const pw=prompt('🔐 كلمة السر:');
     if(pw===ADMIN_PASS){
       document.body.classList.add('admin-mode');
