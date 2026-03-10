@@ -245,22 +245,6 @@ html[lang="en"] body{direction:ltr;}
   #lang-btn{top:16px;left:12px;font-size:.58rem;padding:7px 14px;}
 }
 </style>
-<!-- Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
-  const firebaseConfig = {
-    apiKey: "AIzaSyCb5Auan7z00gBOH1179L8P-7HZsoWR_7o",
-    authDomain: "pradox-portfolio.firebaseapp.com",
-    projectId: "pradox-portfolio",
-    storageBucket: "pradox-portfolio.firebasestorage.app",
-    messagingSenderId: "714860051566",
-    appId: "1:714860051566:web:d4397fd4ec98476408fa7f",
-    measurementId: "G-PM7VRTNV3H"
-  };
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </head>
 <body>
 
@@ -400,7 +384,7 @@ html[lang="en"] body{direction:ltr;}
     <div class="contact-btns reveal">
       <a href="https://wa.me/YOUR_NUMBER" class="c-btn" target="_blank"><span class="c-icon">📱</span> WhatsApp</a>
       <a href="https://instagram.com/YOUR_HANDLE" class="c-btn" target="_blank"><span class="c-icon">📸</span> Instagram</a>
-      <a href="/cdn-cgi/l/email-protection#8bd2c4ded9cbcec6cac2c7a5e8e4e6" class="c-btn"><span class="c-icon">✉️</span> Email</a>
+      <a href="mailto:YOUR@EMAIL.com" class="c-btn"><span class="c-icon">✉️</span> Email</a>
       <a href="https://youtube.com/@YOUR_CHANNEL" class="c-btn" target="_blank"><span class="c-icon">▶️</span> YouTube</a>
     </div>
   </div>
@@ -468,7 +452,7 @@ html[lang="en"] body{direction:ltr;}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── CURSOR
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -494,7 +478,7 @@ document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
 // ⚠️ غيّر "pradox2025" لكلمة السر اللي تحبها
 const ADMIN_PASS='pradox2025';
 document.addEventListener('keydown',e=>{
-  if(e.ctrlKey&&e.altKey&&e.key==='A'){
+  if(e.ctrlKey&&e.shiftKey&&e.key==='A'){
     const pw=prompt('🔐 كلمة السر:');
     if(pw===ADMIN_PASS){
       document.body.classList.add('admin-mode');
@@ -593,4 +577,31 @@ function confirmAddProject(){
   cardData[cid]={type:parsed.type,src:parsed.id};
   attachCursorHover(document.getElementById(cid));
   closeAddModal();
-  document.getElementById('
+  document.getElementById('inp-url').value='';
+  document.getElementById('inp-title').value='';
+  document.getElementById('inp-desc').value='';
+}
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCb5Auan7z00gBOH1179L8P-7HZsoWR_7o",
+  authDomain: "pradox-portfolio.firebaseapp.com",
+  projectId: "pradox-portfolio",
+  storageBucket: "pradox-portfolio.firebasestorage.app",
+  messagingSenderId: "714860051566",
+  appId: "1:714860051566:web:d4397fd4ec98476408fa7f",
+  measurementId: "G-PM7VRTNV3H"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
+
+</script>
+
+</body>
+</html>
