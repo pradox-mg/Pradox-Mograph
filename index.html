@@ -384,7 +384,7 @@ html[lang="en"] body{direction:ltr;}
     <div class="contact-btns reveal">
       <a href="https://wa.me/YOUR_NUMBER" class="c-btn" target="_blank"><span class="c-icon">📱</span> WhatsApp</a>
       <a href="https://instagram.com/YOUR_HANDLE" class="c-btn" target="_blank"><span class="c-icon">📸</span> Instagram</a>
-      <a href="mailto:YOUR@EMAIL.com" class="c-btn"><span class="c-icon">✉️</span> Email</a>
+      <a href="/cdn-cgi/l/email-protection#f9a0b6acabb9bcb4b8b0b5d79a9694" class="c-btn"><span class="c-icon">✉️</span> Email</a>
       <a href="https://youtube.com/@YOUR_CHANNEL" class="c-btn" target="_blank"><span class="c-icon">▶️</span> YouTube</a>
     </div>
   </div>
@@ -452,7 +452,7 @@ html[lang="en"] body{direction:ltr;}
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── CURSOR
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -500,6 +500,31 @@ function toggleAdminPanel(){
 
 // ── CARDS DATA
 const cardData={};
+
+// ═══════════════════════════════════════════
+// 👇 هنا بتحط روابط الفيديوهات بتاعتك
+// ═══════════════════════════════════════════
+
+// الكارت الأول
+cardData['vc1']={type:'yt', src:'VIDEO_ID_HENA'};
+// ^ غيّر VIDEO_ID_HENA بـ ID الفيديو من يوتيوب
+// مثال: لو الرابط youtube.com/watch?v=ABC123 → اكتب 'ABC123'
+
+// الكارت التاني
+cardData['vc2']={type:'yt', src:'VIDEO_ID_HENA'};
+
+// الكارت التالت
+cardData['vc3']={type:'yt', src:'VIDEO_ID_HENA'};
+
+// ═══════════════════════════════════════════
+// لو الفيديو على Streamable مش يوتيوب:
+// cardData['vc1']={type:'streamable', src:'CODE_HENA'};
+// مثال: streamable.com/abc123 → src:'abc123'
+//
+// لو Google Drive:
+// cardData['vc1']={type:'gdrive', src:'FILE_ID_HENA'};
+// ═══════════════════════════════════════════
+
 function cardClick(id){
   const d=cardData[id];
   if(!d){return;}
@@ -593,13 +618,4 @@ const firebaseConfig = {
   projectId: "pradox-portfolio",
   storageBucket: "pradox-portfolio.firebasestorage.app",
   messagingSenderId: "714860051566",
-  appId: "1:714860051566:web:d4397fd4ec98476408fa7f",
-  measurementId: "G-PM7VRTNV3H"
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-</script>
-
-</body>
-</html>
+  appId: "1:714860051566:web:d4397fd4ec98476408fa7f"
