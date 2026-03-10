@@ -1,5 +1,3 @@
-# Pradox Mograph
-
 # 👋 Hello, I'm Pradox | Video Editor & Motion Designer
 
 <p align="center">
