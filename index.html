@@ -1,858 +1,809 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">و 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pradox Motion Graphic</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:#05030e; --bg2:#080414; --deep:#0c0520;
-  --p1:#3d1a8f; --p2:#6d28d9; --p3:#a855f7; --p4:#d8b4fe;
-  --pink:#c2185b; --pink2:#e879a0; --pink3:#f8d7ea;
-  --text:#ede8ff; --muted:#7264a0; --dim:#2e2550;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:auto;}
-#cur{display:none;}
-#cur-ring{display:none;}
-#lang-btn{position:fixed;top:22px;left:22px;z-index:200;background:rgba(61,26,143,.15);border:1px solid rgba(168,85,247,.25);color:var(--p4);font-family:'DM Sans',sans-serif;font-size:.65rem;letter-spacing:2px;padding:9px 20px;cursor:auto;transition:all .3s;backdrop-filter:blur(12px);border-radius:2px;}
-#lang-btn:hover{background:rgba(61,26,143,.3);color:#fff;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0010;
+            --primary-purple: #b040ff;
+            --primary-pink: #ff40cc;
+            --neon-cyan: #00f2ff;
+            --neon-gold: #ffcc00;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+            --glass-bg: rgba(10, 0, 16, 0.7);
+            --transition: all 0.3s ease;
+        }
 
-/* ADMIN */
-#admin-toggle{position:fixed;top:22px;right:22px;z-index:9999;background:transparent;border:none;color:rgba(168,85,247,.2);font-size:.7rem;padding:6px 10px;cursor:pointer;transition:all .3s;border-radius:2px;display:block;}
-#admin-toggle:hover{color:var(--pink2);}
-/* BIG ADMIN PANEL */
-#adminPanel{position:fixed;inset:0;z-index:9000;background:rgba(5,3,14,.98);overflow-y:auto;display:none;direction:rtl;}
-#adminPanel.open{display:block;}
-.adm-wrap{max-width:780px;margin:0 auto;padding:30px 20px 60px;}
-.adm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;border-bottom:1px solid rgba(168,85,247,.15);padding-bottom:20px;}
-.adm-header h2{font-family:'Big Shoulders Display',sans-serif;font-size:1.8rem;color:#a855f7;letter-spacing:2px;}
-.adm-close{background:rgba(194,24,91,.15);border:1px solid #e879a0;color:#e879a0;padding:9px 20px;border-radius:4px;cursor:pointer;font-size:.75rem;letter-spacing:1px;}
-.adm-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
-.adm-tab{padding:9px 20px;background:rgba(61,26,143,.1);border:1px solid rgba(168,85,247,.15);color:#7264a0;border-radius:6px;cursor:pointer;font-size:.75rem;letter-spacing:1px;transition:all .3s;}
-.adm-tab.active,.adm-tab:hover{background:rgba(61,26,143,.3);border-color:#a855f7;color:#d8b4fe;}
-.adm-section{display:none;}
-.adm-section.active{display:block;}
-.adm-box{background:rgba(61,26,143,.08);border:1px solid rgba(168,85,247,.15);border-radius:10px;padding:20px;margin-bottom:16px;}
-.adm-box h3{color:#d8b4fe;font-size:.85rem;margin-bottom:14px;letter-spacing:1px;}
-.adm-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-.adm-field{margin-bottom:12px;}
-.adm-field label{display:block;color:#a855f7;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
-.adm-field input,.adm-field textarea,.adm-field select{width:100%;padding:10px 12px;background:rgba(61,26,143,.12);border:1px solid rgba(168,85,247,.2);color:#ede8ff;border-radius:6px;font-size:.88rem;outline:none;transition:border-color .3s;font-family:'Noto Kufi Arabic',sans-serif;}
-.adm-field input:focus,.adm-field textarea:focus{border-color:#e879a0;}
-.adm-field textarea{min-height:65px;resize:vertical;}
-.adm-field select option{background:#0c0520;}
-.adm-btn-main{width:100%;padding:12px;background:linear-gradient(135deg,#3d1a8f,#c2185b);border:none;color:#fff;border-radius:6px;cursor:pointer;font-size:.85rem;letter-spacing:1px;margin-top:4px;transition:opacity .3s;}
-.adm-btn-main:hover{opacity:.85;}
-.adm-btn-del{padding:8px 16px;background:rgba(194,24,91,.15);border:1px solid rgba(232,121,160,.3);color:#e879a0;border-radius:4px;cursor:pointer;font-size:.72rem;transition:all .3s;}
-.adm-btn-del:hover{background:rgba(194,24,91,.3);}
-.adm-btn-sec{padding:8px 16px;background:rgba(61,26,143,.15);border:1px solid rgba(168,85,247,.2);color:#a855f7;border-radius:4px;cursor:pointer;font-size:.72rem;transition:all .3s;}
-.adm-btn-sec:hover{background:rgba(61,26,143,.3);}
-.proj-list{display:grid;gap:10px;}
-.proj-item{background:rgba(61,26,143,.08);border:1px solid rgba(168,85,247,.12);border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
-.proj-item-info{flex:1;}
-.proj-item-title{font-family:'Big Shoulders Display',sans-serif;font-size:.95rem;color:#ede8ff;letter-spacing:.5px;}
-.proj-item-url{font-size:.68rem;color:#7264a0;margin-top:3px;word-break:break-all;}
-.proj-item-actions{display:flex;gap:6px;flex-shrink:0;}
-.adm-tip{background:rgba(61,26,143,.06);border:1px solid rgba(168,85,247,.1);border-radius:6px;padding:12px;font-size:.72rem;color:#7264a0;line-height:1.8;margin-bottom:14px;}
-.adm-tip strong{color:#a855f7;}
-.adm-tip a{color:#e879a0;text-decoration:none;}
-.adm-btn{display:block;width:100%;padding:9px 14px;background:rgba(61,26,143,.15);border:1px solid rgba(168,85,247,.2);color:var(--p4);font-family:'DM Sans',sans-serif;font-size:.6rem;letter-spacing:2px;text-align:center;cursor:auto;margin-bottom:8px;transition:all .3s;border-radius:4px;}
-.adm-btn:hover{background:rgba(194,24,91,.15);border-color:var(--pink2);color:var(--pink2);}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Exo 2', sans-serif;
+        }
 
-/* NAV — CENTERED */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;background:linear-gradient(to bottom,rgba(5,3,14,.92),transparent);backdrop-filter:blur(2px);}
-.logo{font-family:'Big Shoulders Display',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:5px;text-decoration:none;color:var(--text);text-transform:uppercase;}
-.logo em{font-style:normal;color:var(--pink2);}
-.nav-links{display:flex;gap:40px;list-style:none;}
-.nav-links a{font-family:'DM Sans',sans-serif;font-weight:300;font-size:.68rem;letter-spacing:3px;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .3s;position:relative;cursor:auto;}
-.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1px;background:var(--pink2);transition:width .4s ease;}
-.nav-links a:hover{color:var(--pink2);}
-.nav-links a:hover::after{width:100%;}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0 60px;}
-.blob-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.blob{position:absolute;border-radius:50%;filter:blur(60px);will-change:transform;animation:blobMove 22s ease-in-out infinite alternate;}
-.blob1{width:500px;height:500px;background:radial-gradient(circle,rgba(61,26,143,.5) 0%,transparent 70%);top:-150px;right:-80px;animation-duration:24s;}
-.blob2{width:350px;height:350px;background:radial-gradient(circle,rgba(194,24,91,.25) 0%,transparent 70%);bottom:-60px;left:-60px;animation-duration:28s;animation-delay:-8s;}
-.blob3{display:none;}
-@keyframes blobMove{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(25px,-20px,0)}}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(168,85,247,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.04) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 75% 75% at center,black 25%,transparent 75%);}
-.shapes{position:absolute;inset:0;pointer-events:none;}
-.shape{display:none;}
-@keyframes shapeDrift{}
-.hero-content{position:relative;z-index:2;max-width:900px;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.6rem;letter-spacing:4px;color:var(--pink2);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:riseIn .8s .2s ease forwards;font-weight:300;}
-.eyebrow-dot{width:6px;height:6px;background:var(--pink2);border-radius:50%;}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,121,160,.6)}50%{box-shadow:0 0 0 8px rgba(232,121,160,0)}}
-.hero-title{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(3.2rem,8vw,7.5rem);font-weight:700;line-height:1;letter-spacing:1px;margin-bottom:32px;opacity:0;animation:riseIn .9s .4s ease forwards;}
-.t-outline{-webkit-text-stroke:1px var(--p3);color:transparent;display:block;font-weight:600;}
-.t-grad{background:linear-gradient(110deg,var(--p3) 0%,var(--pink2) 60%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%;animation:gradShift 8s linear infinite;}
-@keyframes gradShift{0%{background-position:0%}100%{background-position:200%}}
-.hero-sub{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.85;font-weight:300;margin-bottom:52px;opacity:0;animation:riseIn .9s .6s ease forwards;font-family:'Noto Kufi Arabic',sans-serif;margin-left:auto;margin-right:auto;}
-.hero-actions{display:flex;gap:18px;align-items:center;justify-content:center;opacity:0;animation:riseIn .9s .8s ease forwards;}
-.btn-glow{padding:14px 38px;background:linear-gradient(135deg,var(--p1),var(--pink));color:#fff;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:400;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;position:relative;overflow:hidden;transition:all .4s;cursor:auto;border-radius:2px;box-shadow:0 0 30px rgba(61,26,143,.4);}
-.btn-glow::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--pink),var(--p1));opacity:0;transition:opacity .4s;}
-.btn-glow:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(61,26,143,.5),0 8px 30px rgba(0,0,0,.3);}
-.btn-glow:hover::before{opacity:1;}
-.btn-glow span{position:relative;z-index:1;}
-.btn-ghost{padding:13px 34px;border:1px solid rgba(168,85,247,.25);color:var(--muted);text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:300;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;transition:all .4s;cursor:auto;background:transparent;border-radius:2px;}
-.btn-ghost:hover{color:var(--pink2);border-color:var(--pink2);background:rgba(232,121,160,.05);}
-.scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:300;font-size:.52rem;letter-spacing:4px;color:var(--dim);text-transform:uppercase;animation:fadeInD 1s 1.5s ease forwards;opacity:0;}
-.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--p3),transparent);animation:scrollAnim 2s ease infinite;}
-@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@keyframes fadeInD{to{opacity:1}}
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-/* STATS */
-.stats{padding:0 60px;position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(168,85,247,.1);border-bottom:1px solid rgba(168,85,247,.1);background:rgba(8,4,20,.7);backdrop-filter:blur(20px);}
-.stat-item{padding:36px 20px;text-align:center;border-right:1px solid rgba(168,85,247,.08);transition:background .4s;}
-.stat-item:last-child{border-right:none;}
-.stat-item:hover{background:rgba(61,26,143,.06);}
-.stat-n{font-family:'Big Shoulders Display',sans-serif;font-size:2.8rem;font-weight:700;background:linear-gradient(135deg,var(--p3),var(--pink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
-.stat-l{font-size:.58rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:6px;font-weight:300;}
+        h1, h2, h3, .logo, .nav-links a, .cta-btn, .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
 
-/* SECTIONS */
-section{padding:110px 60px;position:relative;z-index:2;}
-.s-tag{display:inline-flex;align-items:center;gap:10px;font-weight:300;font-size:.58rem;letter-spacing:4px;color:var(--pink2);text-transform:uppercase;margin-bottom:18px;}
-.s-tag::before{content:'';width:20px;height:1px;background:var(--pink2);}
-.s-title{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:.5px;margin-bottom:70px;}
-.reveal{opacity:0;transform:translateY(50px);transition:opacity .8s ease,transform .8s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .9s ease,transform .9s ease;}
-.reveal-left.visible{opacity:1;transform:translateX(0);}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-/* WORKS */
-#work{background:var(--bg);}
-.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.vid-card{position:relative;border-radius:10px;overflow:hidden;background:var(--deep);border:1px solid rgba(168,85,247,.1);transition:all .5s cubic-bezier(.23,1,.32,1);cursor:auto;}
-.vid-card:hover{transform:translateY(-7px);border-color:rgba(232,121,160,.3);box-shadow:0 28px 70px rgba(0,0,0,.5),0 0 25px rgba(194,24,91,.1);}
-.vid-wrap{aspect-ratio:16/9;position:relative;overflow:hidden;background:linear-gradient(135deg,#0c0520,#120a2e);}
-.vid-wrap video,.vid-wrap iframe{width:100%;height:100%;object-fit:cover;border:none;display:block;}
-.public-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(12,5,32,.97),rgba(18,10,46,.97));}
-.pub-icon{font-size:2.5rem;opacity:.2;}
-.vid-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,3,14,.97) 0%,rgba(5,3,14,.3) 45%,transparent 100%);opacity:0;transition:opacity .4s;}
-.vid-card:hover .vid-overlay{opacity:1;}
-.play-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.7);width:58px;height:58px;border:1px solid rgba(255,255,255,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:all .4s cubic-bezier(.23,1,.32,1);background:rgba(61,26,143,.35);backdrop-filter:blur(6px);}
-.play-ring::after{content:'';width:0;height:0;border-style:solid;border-width:9px 0 9px 18px;border-color:transparent transparent transparent #fff;margin-left:4px;}
-.vid-card:hover .play-ring{opacity:1;transform:translate(-50%,-50%) scale(1);}
-.vid-info{padding:18px 20px 22px;}
-.vid-cat{font-weight:300;font-size:.52rem;letter-spacing:4px;color:var(--pink2);text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-.vid-cat::before{content:'';width:10px;height:1px;background:var(--pink2);}
-.vid-title{font-family:'Big Shoulders Display',sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:.5px;margin-bottom:10px;}
-.vid-desc{font-size:.84rem;color:var(--muted);line-height:1.65;font-weight:300;opacity:0;transform:translateY(7px);transition:opacity .4s .1s,transform .4s .1s;font-family:'Noto Kufi Arabic',sans-serif;}
-.vid-card:hover .vid-desc{opacity:1;transform:translateY(0);}
-.vid-desc em{font-style:normal;color:var(--p4);}
-/* ADD CARD */
-.vid-card.add-card{min-height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(8,4,20,.6);border:1px dashed rgba(168,85,247,.15);}
-.vid-card.add-card:hover{border-color:var(--pink2);background:rgba(194,24,91,.04);}
-.add-icon{font-size:2rem;color:var(--dim);transition:color .3s;}
-.vid-card.add-card:hover .add-icon{color:var(--pink2);}
-.add-txt{font-weight:300;font-size:.56rem;letter-spacing:3px;color:var(--dim);text-transform:uppercase;transition:color .3s;}
-.vid-card.add-card:hover .add-txt{color:var(--pink2);}
-/* ADMIN ONLY */
-.admin-only{display:none!important;}
-body.admin-mode .admin-only{display:flex!important;}
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
 
-/* WATCH MODAL */
-.modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;}
-.modal.open{opacity:1;pointer-events:all;}
-.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.94);backdrop-filter:blur(18px);}
-.modal-box{position:relative;z-index:1;width:92vw;max-width:1100px;max-height:90vh;transform:scale(.88);transition:transform .5s cubic-bezier(.34,1.56,.64,1);border:1px solid rgba(168,85,247,.2);border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#000;}
-.modal.open .modal-box{transform:scale(1);}
-.modal-box iframe,.modal-box video{width:100%;height:100%;min-height:300px;border:none;border-radius:10px;}
-.modal-close{position:absolute;top:-48px;right:0;background:rgba(61,26,143,.15);border:1px solid rgba(168,85,247,.25);color:var(--muted);font-size:.6rem;letter-spacing:2px;padding:10px 22px;cursor:auto;text-transform:uppercase;transition:all .3s;}
-.modal-close:hover{color:#fff;background:rgba(194,24,91,.2);border-color:var(--pink2);}
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
 
-/* ADD PROJECT MODAL */
-#addModal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px;}
-#addModal.open{opacity:1;pointer-events:all;}
-#addModal .modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(16px);}
-.add-modal-box{position:relative;z-index:1;background:var(--bg2);border:1px solid rgba(168,85,247,.25);border-radius:14px;padding:36px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;}
-.add-modal-box h3{font-family:'Big Shoulders Display',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:6px;letter-spacing:1px;}
-.add-modal-box .sub{font-size:.78rem;color:var(--muted);margin-bottom:24px;font-family:'Noto Kufi Arabic',sans-serif;line-height:1.7;}
-.field-group{margin-bottom:16px;}
-.field-group label{display:block;font-size:.6rem;letter-spacing:3px;color:var(--p3);text-transform:uppercase;margin-bottom:7px;}
-.field-group input,.field-group select,.field-group textarea{width:100%;background:rgba(61,26,143,.08);border:1px solid rgba(168,85,247,.2);color:var(--text);padding:11px 14px;font-size:.85rem;border-radius:6px;outline:none;transition:border-color .3s;cursor:auto;font-family:'DM Sans',sans-serif;}
-.field-group input:focus,.field-group select:focus,.field-group textarea:focus{border-color:var(--pink2);}
-.field-group textarea{resize:vertical;min-height:70px;}
-.field-group select option{background:var(--bg2);}
-.hosting-tip{background:rgba(61,26,143,.08);border:1px solid rgba(168,85,247,.12);border-radius:8px;padding:14px 16px;margin-bottom:20px;}
-.hosting-tip p{font-size:.74rem;color:var(--muted);line-height:1.9;font-family:'Noto Kufi Arabic',sans-serif;}
-.hosting-tip strong{color:var(--p4);}
-.hosting-tip a{color:var(--pink2);text-decoration:none;}
-.hosting-tip code{color:var(--p4);font-size:.68rem;background:rgba(168,85,247,.1);padding:2px 6px;border-radius:3px;}
-.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;}
-.modal-actions button{padding:10px 24px;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:auto;transition:all .3s;}
-.btn-cancel{background:transparent;border:1px solid rgba(168,85,247,.2);color:var(--muted);}
-.btn-cancel:hover{border-color:var(--pink2);color:var(--pink2);}
-.btn-add{background:linear-gradient(135deg,var(--p1),var(--pink));border:none;color:#fff;}
-.btn-add:hover{opacity:.85;}
+        /* Animated Background Orbs */
+        .orb-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-/* ABOUT */
-#about{background:var(--bg2);border-top:1px solid rgba(168,85,247,.07);}
-.about-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:90px;align-items:center;}
-.about-card{background:linear-gradient(135deg,rgba(61,26,143,.12),rgba(194,24,91,.05));border:1px solid rgba(168,85,247,.15);border-radius:14px;padding:50px 40px;position:relative;overflow:hidden;text-align:center;}
-.about-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(61,26,143,.2) 0%,transparent 70%);}
-.about-initials{font-family:'Big Shoulders Display',sans-serif;font-size:5rem;font-weight:700;background:linear-gradient(135deg,var(--p3),var(--pink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:10px;position:relative;}
-.about-role{font-weight:300;font-size:.58rem;letter-spacing:4px;color:var(--pink2);text-transform:uppercase;}
-.about-float{position:absolute;right:-16px;top:28px;background:rgba(5,3,14,.93);border:1px solid rgba(168,85,247,.2);border-radius:10px;padding:14px 20px;backdrop-filter:blur(12px);}
-@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.float-val{font-family:'Big Shoulders Display',sans-serif;font-size:1.4rem;font-weight:700;color:var(--p3);}
-.float-lbl{font-weight:300;font-size:.5rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
-.about-skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
-.skill-pill{font-weight:300;font-size:.56rem;letter-spacing:2px;padding:7px 15px;border:1px solid rgba(168,85,247,.18);color:var(--p3);text-transform:uppercase;background:rgba(61,26,143,.06);border-radius:100px;transition:all .3s;cursor:default;}
-.skill-pill:hover{background:rgba(194,24,91,.1);border-color:var(--pink2);color:var(--pink2);}
-.about-bio{color:var(--muted);line-height:1.9;font-size:1rem;font-weight:300;margin-bottom:32px;font-family:'Noto Kufi Arabic',sans-serif;}
-.about-bio strong{color:var(--text);font-weight:500;}
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: move 20s infinite alternate;
+        }
 
-/* GRADING */
-#grading{background:var(--bg);border-top:1px solid rgba(168,85,247,.07);}
-.grading-intro{color:var(--muted);font-size:1rem;line-height:1.8;font-weight:300;max-width:620px;margin-bottom:60px;font-family:'Noto Kufi Arabic',sans-serif;}
-.grading-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.grade-card{border-radius:10px;overflow:hidden;border:1px solid rgba(168,85,247,.1);cursor:auto;transition:all .5s cubic-bezier(.23,1,.32,1);}
-.grade-card:hover{transform:translateY(-6px);border-color:rgba(168,85,247,.3);box-shadow:0 20px 60px rgba(0,0,0,.5);}
-.grade-swatch{height:160px;position:relative;overflow:hidden;}
-.grade-swatch::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,3,14,.9) 0%,transparent 60%);}
-.grade-warm{background:linear-gradient(135deg,#1a0a00,#3d1500,#7c2d00,#b85c00,#e8923a);}
-.grade-cold{background:linear-gradient(135deg,#000814,#001d3d,#003566,#0353a4,#4895ef);}
-.grade-moody{background:linear-gradient(135deg,#05030e,#1a0838,#3d1a8f,#6d28d9,#a855f7);}
-.grade-noir{background:linear-gradient(135deg,#000000,#111111,#222222,#444444,#888888);}
-.grade-sunset{background:linear-gradient(135deg,#0d0010,#3b0a45,#7b2d8b,#c2185b,#e8923a);}
-.grade-neon{background:linear-gradient(135deg,#050010,#1a003d,#3d0080,#8000ff,#bf40ff);}
-.grade-label{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;z-index:1;}
-.grade-name{font-family:'Big Shoulders Display',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.5px;color:var(--text);}
-.grade-sub{font-weight:300;font-size:.56rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:3px;}
-.grade-info{padding:16px 18px 20px;background:var(--deep);}
-.grade-desc{font-size:.84rem;color:var(--muted);line-height:1.6;font-weight:300;font-family:'Noto Kufi Arabic',sans-serif;}
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-purple);
+            top: -100px;
+            right: -100px;
+        }
 
-/* SERVICES */
-#services{background:var(--bg2);border-top:1px solid rgba(168,85,247,.07);}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.svc-card{padding:44px 36px;border:1px solid rgba(168,85,247,.1);background:rgba(8,4,20,.7);border-radius:10px;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.23,1,.32,1);}
-.svc-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--p2),var(--pink));transform:scaleX(0);transition:transform .5s;transform-origin:left;}
-.svc-card:hover{transform:translateY(-5px);background:rgba(61,26,143,.06);border-color:rgba(168,85,247,.25);box-shadow:0 18px 50px rgba(0,0,0,.4);}
-.svc-card:hover::after{transform:scaleX(1);}
-.svc-icon{font-size:1.8rem;margin-bottom:20px;display:block;opacity:.7;}
-.svc-n{font-family:'Big Shoulders Display',sans-serif;font-size:3.2rem;font-weight:700;color:rgba(168,85,247,.07);line-height:1;margin-bottom:18px;transition:color .4s;}
-.svc-card:hover .svc-n{color:rgba(168,85,247,.16);}
-.svc-title{font-family:'Big Shoulders Display',sans-serif;font-size:1.1rem;font-weight:600;letter-spacing:.5px;margin-bottom:12px;}
-.svc-desc{color:var(--muted);font-size:.88rem;line-height:1.7;font-weight:300;font-family:'Noto Kufi Arabic',sans-serif;}
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-pink);
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
 
-/* CONTACT */
-#contact{background:var(--bg);border-top:1px solid rgba(168,85,247,.07);text-align:center;}
-.contact-inner{max-width:750px;margin:0 auto;}
-.contact-cta{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;line-height:1.05;margin-bottom:20px;letter-spacing:.5px;}
-.contact-cta span{background:linear-gradient(110deg,var(--p3),var(--pink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.contact-sub{color:var(--muted);margin-bottom:56px;font-size:.98rem;font-weight:300;line-height:1.8;font-family:'Noto Kufi Arabic',sans-serif;}
-.contact-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;}
-.c-btn{display:flex;align-items:center;gap:10px;padding:14px 28px;border:1px solid rgba(168,85,247,.18);color:var(--text);text-decoration:none;font-weight:300;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;background:rgba(61,26,143,.05);border-radius:6px;transition:all .4s;cursor:auto;}
-.c-btn:hover{border-color:var(--pink2);background:rgba(194,24,91,.07);color:var(--pink2);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.3);}
-.c-icon{font-size:1rem;}
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--primary-purple);
+            top: 50%;
+            left: 30%;
+            animation-delay: -10s;
+        }
 
-footer{padding:28px 60px;border-top:1px solid rgba(168,85,247,.07);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
-.f-logo{font-family:'Big Shoulders Display',sans-serif;font-size:1rem;font-weight:700;letter-spacing:4px;color:var(--muted);}
-.f-logo em{font-style:normal;color:var(--pink2);}
-.f-copy{font-weight:300;font-size:.55rem;letter-spacing:2px;color:var(--dim);}
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 50px); }
+        }
 
-@keyframes riseIn{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
-.ripple{position:fixed;width:0;height:0;border-radius:50%;background:rgba(168,85,247,.15);transform:translate(-50%,-50%);pointer-events:none;z-index:9997;animation:rippleOut .6s ease forwards;}
-@keyframes rippleOut{to{width:80px;height:80px;opacity:0}}
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.35;}
-::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--p2);border-radius:2px;}
-.txt-ar{display:block;}.txt-en{display:none;}
-html[lang="en"] .txt-ar{display:none;}html[lang="en"] .txt-en{display:block;}
-html[lang="en"] body{direction:ltr;}
-@media(max-width:900px){
-  nav{padding:18px 24px;gap:20px;}.nav-links{display:none;}
-  section{padding:70px 24px;}.hero{padding:100px 24px 60px;}
-  .stats{grid-template-columns:repeat(2,1fr);padding:0;}
-  .works-grid,.services-grid,.grading-grid{grid-template-columns:1fr;}
-  .about-wrap{grid-template-columns:1fr;gap:50px;}
-  footer{padding:20px 24px;flex-direction:column;gap:10px;text-align:center;}
-  #lang-btn{top:16px;left:12px;font-size:.58rem;padding:7px 14px;}
-}
-</style>
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-filled {
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-pink));
+            color: white;
+            box-shadow: 0 0 15px var(--primary-purple);
+        }
+
+        .btn-filled:hover {
+            box-shadow: 0 0 25px var(--primary-pink);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-purple);
+            color: var(--primary-purple);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-purple);
+            color: white;
+            box-shadow: 0 0 20px var(--primary-purple);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(176, 64, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--primary-purple);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-white);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-pink);
+            text-shadow: 0 0 10px var(--primary-pink);
+        }
+
+        .nav-links .hire-me {
+            border: 1px solid var(--primary-purple);
+            padding: 8px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px var(--primary-purple);
+        }
+
+        .nav-links .hire-me:hover {
+            background: var(--primary-purple);
+            color: white;
+            box-shadow: 0 0 20px var(--primary-purple);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content h2 {
+            font-size: 1rem;
+            color: var(--primary-pink);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* Projects Section */
+        #projects h2.section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(176, 64, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-purple);
+            box-shadow: 0 10px 30px rgba(176, 64, 255, 0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(176, 64, 255, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1a0020, #300040);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-purple);
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--neon-gold);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .review-count {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-purple { border: 1px solid var(--primary-purple); color: var(--primary-purple); box-shadow: 0 0 5px var(--primary-purple); }
+        .badge-pink { border: 1px solid var(--primary-pink); color: var(--primary-pink); box-shadow: 0 0 5px var(--primary-pink); }
+        .badge-cyan { border: 1px solid var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 5px var(--neon-cyan); }
+        .badge-gold { border: 1px solid var(--neon-gold); color: var(--neon-gold); box-shadow: 0 0 5px var(--neon-gold); }
+
+        .project-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-btns .btn {
+            padding: 8px 15px;
+            font-size: 0.7rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        #skills h2.section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(176, 64, 255, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 20px rgba(176, 64, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-pink);
+            text-shadow: 0 0 10px var(--primary-pink);
+        }
+
+        .skill-name {
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-pink));
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--primary-pink);
+        }
+
+        /* Contact Section */
+        #contact h2.section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 0 10px rgba(176, 64, 255, 0.3);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-purple);
+            box-shadow: 0 0 20px var(--primary-purple);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input, .form-group textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(176, 64, 255, 0.2);
+            padding: 12px;
+            border-radius: 5px;
+            color: white;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 10px rgba(176, 64, 255, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid rgba(176, 64, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
 </head>
 <body>
+    <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
-<button id="lang-btn" onclick="toggleLang()">EN / AR</button>
-
-<!-- ADMIN (مخفي — Ctrl+Shift+A للدخول) -->
-<button id="admin-toggle" onclick="askAdminPass()" title="Admin">⚙</button>
-
-<!-- ═══ ADMIN PANEL الكامل ═══ -->
-<div id="adminPanel">
-<div class="adm-wrap">
-  <div class="adm-header">
-    <h2>⚙ لوحة التحكم</h2>
-    <button class="adm-close" onclick="closeAdminPanel()">✕ إغلاق</button>
-  </div>
-
-  <div class="adm-tabs">
-    <button class="adm-tab active" onclick="admTab('projects')">🎬 المشاريع</button>
-    <button class="adm-tab" onclick="admTab('texts')">✏️ التكستات</button>
-    <button class="adm-tab" onclick="admTab('settings')">🔐 الإعدادات</button>
-  </div>
-
-  <!-- TAB 1: المشاريع -->
-  <div id="tab-projects" class="adm-section active">
-
-    <!-- إضافة / تعديل -->
-    <div class="adm-box">
-      <h3>➕ إضافة مشروع جديد</h3>
-      <div class="adm-tip">
-        <strong>روابط مدعومة:</strong> YouTube · Streamable · Google Drive · Vimeo · رابط MP4 مباشر<br>
-        <strong>Drive:</strong> ارفع → Share → Anyone with link → انسخ الرابط كامل<br>
-        <strong>Streamable:</strong> <a href="https://streamable.com" target="_blank">streamable.com</a> — ارفع وانسخ الرابط
-      </div>
-      <div class="adm-field"><label>رابط الفيديو *</label><input id="new-url" placeholder="https://..."/></div>
-      <div class="adm-row">
-        <div class="adm-field"><label>اسم المشروع</label><input id="new-title" placeholder="PROJECT TITLE"/></div>
-        <div class="adm-field"><label>الفئة</label>
-          <select id="new-cat">
-            <option value="موشن جرافيك|Motion Graphic">موشن جرافيك</option>
-            <option value="مونتاج|Video Edit">مونتاج</option>
-            <option value="كولور جريدينج|Color Grading">كولور جريدينج</option>
-            <option value="VFX|VFX">VFX</option>
-            <option value="إعلان|Ad">إعلان</option>
-          </select>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">DEV<span>PORTFOLIO</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero">About</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="hire-me">Hire Me</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-      </div>
-      <div class="adm-field"><label>وصف (اختياري)</label><textarea id="new-desc" placeholder="سطر أو سطرين..."></textarea></div>
-      <button class="adm-btn-main" onclick="admAddProject()">✅ إضافة المشروع</button>
-    </div>
+    </nav>
 
-    <!-- قائمة المشاريع -->
-    <div class="adm-box">
-      <h3>📋 المشاريع الحالية</h3>
-      <div class="proj-list" id="projList"><!-- filled by JS --></div>
-    </div>
-  </div>
-
-  <!-- TAB 2: التكستات -->
-  <div id="tab-texts" class="adm-section">
-    <div class="adm-box">
-      <h3>🏠 الهيرو</h3>
-      <div class="adm-field"><label>النص الصغير فوق العنوان</label><input id="txt-eyebrow" /></div>
-      <div class="adm-field"><label>الوصف تحت العنوان</label><textarea id="txt-herosub"></textarea></div>
-      <button class="adm-btn-main" onclick="admSaveTexts()">💾 حفظ</button>
-    </div>
-    <div class="adm-box">
-      <h3>👤 About</h3>
-      <div class="adm-field"><label>البيو بتاعتك</label><textarea id="txt-bio" style="min-height:100px;"></textarea></div>
-      <button class="adm-btn-main" onclick="admSaveTexts()">💾 حفظ</button>
-    </div>
-    <div class="adm-box">
-      <h3>📞 Contact</h3>
-      <div class="adm-row">
-        <div class="adm-field"><label>رابط WhatsApp</label><input id="txt-wa" placeholder="https://wa.me/..."/></div>
-        <div class="adm-field"><label>رابط Instagram</label><input id="txt-ig" placeholder="https://instagram.com/..."/></div>
-      </div>
-      <div class="adm-row">
-        <div class="adm-field"><label>البريد الإلكتروني</label><input id="txt-email" placeholder="your@email.com"/></div>
-        <div class="adm-field"><label>رابط YouTube</label><input id="txt-yt" placeholder="https://youtube.com/..."/></div>
-      </div>
-      <button class="adm-btn-main" onclick="admSaveLinks()">💾 حفظ الروابط</button>
-    </div>
-    <div class="adm-box">
-      <h3>📊 الإحصائيات</h3>
-      <div class="adm-row">
-        <div class="adm-field"><label>مشاريع منجزة</label><input id="txt-s1" placeholder="50+"/></div>
-        <div class="adm-field"><label>سنوات خبرة</label><input id="txt-s2" placeholder="3+"/></div>
-      </div>
-      <div class="adm-row">
-        <div class="adm-field"><label>عملاء سعداء</label><input id="txt-s3" placeholder="30+"/></div>
-        <div class="adm-field"><label>رضا العملاء</label><input id="txt-s4" placeholder="100%"/></div>
-      </div>
-      <button class="adm-btn-main" onclick="admSaveStats()">💾 حفظ الإحصائيات</button>
-    </div>
-  </div>
-
-  <!-- TAB 3: الإعدادات -->
-  <div id="tab-settings" class="adm-section">
-    <div class="adm-box">
-      <h3>🔐 تغيير كلمة السر</h3>
-      <div class="adm-field"><label>كلمة السر الجديدة</label><input id="new-pass" type="password" placeholder="..."/></div>
-      <button class="adm-btn-main" onclick="admChangePass()">💾 تغيير كلمة السر</button>
-    </div>
-  </div>
-
-</div>
-</div>
-
-<!-- NAV — CENTERED -->
-<nav>
-  <a href="#" class="logo">PRADOX <em>MG</em></a>
-  <ul class="nav-links">
-    <li><a href="#work"><span class="txt-ar">الأعمال</span><span class="txt-en">Work</span></a></li>
-    <li><a href="#grading"><span class="txt-ar">كولور جريدينج</span><span class="txt-en">Grading</span></a></li>
-    <li><a href="#about"><span class="txt-ar">عني</span><span class="txt-en">About</span></a></li>
-    <li><a href="#services"><span class="txt-ar">خدماتي</span><span class="txt-en">Services</span></a></li>
-    <li><a href="#contact"><span class="txt-ar">تواصل</span><span class="txt-en">Contact</span></a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="blob-wrap"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
-  <div class="hero-grid"></div>
-  <div class="shapes"><div class="shape shape1"></div><div class="shape shape2"></div><div class="shape shape3"></div></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow"><div class="eyebrow-dot"></div><span class="txt-ar">موشن جرافيك · مونتاج احترافي</span><span class="txt-en">Motion Graphic · Pro Video Editing</span></div>
-    <h1 class="hero-title">PRADOX<br><span class="t-outline">MOTION</span><span class="t-grad">GRAPHIC</span></h1>
-    <p class="hero-sub"><span class="txt-ar">بصنع محتوى بصري يترك أثر — موشن جرافيك وفيديوهات تتكلم من غير ما تقول كلمة.</span><span class="txt-en">Crafting visuals that leave a mark — motion graphics & edits that speak before words do.</span></p>
-    <div class="hero-actions">
-      <a href="#work" class="btn-glow"><span><span class="txt-ar">شوف الأعمال</span><span class="txt-en">View Work</span></span></a>
-      <a href="#contact" class="btn-ghost"><span class="txt-ar">تواصل معايا</span><span class="txt-en">Get In Touch</span></a>
-    </div>
-  </div>
-  <div class="scroll-hint"><div class="scroll-line"></div><span class="txt-ar">اسكرول</span><span class="txt-en">SCROLL</span></div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-item reveal"><div class="stat-n">50+</div><div class="stat-l"><span class="txt-ar">مشروع منجز</span><span class="txt-en">Projects Done</span></div></div>
-  <div class="stat-item reveal"><div class="stat-n">3+</div><div class="stat-l"><span class="txt-ar">سنوات خبرة</span><span class="txt-en">Years Exp</span></div></div>
-  <div class="stat-item reveal"><div class="stat-n">30+</div><div class="stat-l"><span class="txt-ar">عميل سعيد</span><span class="txt-en">Happy Clients</span></div></div>
-  <div class="stat-item reveal"><div class="stat-n">100%</div><div class="stat-l"><span class="txt-ar">رضا تام</span><span class="txt-en">Satisfaction</span></div></div>
-</div>
-
-<!-- WORK -->
-<section id="work">
-  <div class="s-tag"><span class="txt-ar">البورتفوليو</span><span class="txt-en">Portfolio</span></div>
-  <h2 class="s-title"><span class="txt-ar">أبرز <span style="color:var(--pink2)">الأعمال</span></span><span class="txt-en">SELECTED <span style="color:var(--pink2)">WORK</span></span></h2>
-  <div class="works-grid" id="worksGrid">
-
-    <div class="vid-card reveal" id="vc1" onclick="cardClick('vc1')">
-      <div class="vid-wrap" id="vw1"><div class="public-placeholder"><div class="pub-icon">▶</div></div><div class="play-ring"></div><div class="vid-overlay"></div></div>
-      <div class="vid-info"><div class="vid-cat"><span class="txt-ar">موشن جرافيك</span><span class="txt-en">Motion Graphic</span></div><div class="vid-title">PROJECT TITLE 01</div><div class="vid-desc"><span class="txt-ar">موشن جرافيك <em>احترافي</em> لإعلان تجاري.</span><span class="txt-en"><em>Professional</em> motion graphic for a commercial.</span></div></div>
-    </div>
-
-    <div class="vid-card reveal" id="vc2" onclick="cardClick('vc2')">
-      <div class="vid-wrap" id="vw2"><div class="public-placeholder"><div class="pub-icon">▶</div></div><div class="play-ring"></div><div class="vid-overlay"></div></div>
-      <div class="vid-info"><div class="vid-cat"><span class="txt-ar">مونتاج</span><span class="txt-en">Video Edit</span></div><div class="vid-title">PROJECT TITLE 02</div><div class="vid-desc"><span class="txt-ar">مونتاج <em>سينمائي</em> مع كولور جريدينج.</span><span class="txt-en"><em>Cinematic</em> edit with custom color grading.</span></div></div>
-    </div>
-
-    <div class="vid-card reveal" id="vc3" onclick="cardClick('vc3')">
-      <div class="vid-wrap" id="vw3"><div class="public-placeholder"><div class="pub-icon">▶</div></div><div class="play-ring"></div><div class="vid-overlay"></div></div>
-      <div class="vid-info"><div class="vid-cat"><span class="txt-ar">كولور جريدينج</span><span class="txt-en">Color Grading</span></div><div class="vid-title">PROJECT TITLE 03</div><div class="vid-desc"><span class="txt-ar">اكتب وصف مشروعك هنا.</span><span class="txt-en">Your project description here.</span></div></div>
-    </div>
-
-    <!-- ADD CARD: admin only -->
-    <div class="vid-card add-card reveal admin-only" onclick="openAddModal()">
-      <div class="add-icon">＋</div>
-      <div class="add-txt"><span class="txt-ar">أضف مشروع جديد</span><span class="txt-en">Add New Project</span></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-wrap">
-    <div style="position:relative;" class="reveal-left">
-      <div class="about-card">
-        <div class="about-initials">PX</div>
-        <div class="about-role"><span class="txt-ar">موشن جرافيك · مونتاج</span><span class="txt-en">Motion Graphic · Editing</span></div>
-        <div class="about-skills">
-          <span class="skill-pill">After Effects</span><span class="skill-pill">Premiere Pro</span><span class="skill-pill">Motion Graphic</span><span class="skill-pill">Color Grading</span><span class="skill-pill">VFX</span><span class="skill-pill">Montage</span><span class="skill-pill">3D Elements</span>
+    <section id="hero">
+        <div class="container hero-content">
+            <h2 class="reveal">Welcome to my world</h2>
+            <h1 class="reveal"><span class="gradient-text">Full Stack Web Developer</span></h1>
+            <p class="reveal">I'm a passionate developer specializing in building exceptional digital experiences. From front-end interfaces to robust back-end systems, I bring ideas to life with clean, efficient code.</p>
+            <div class="hero-btns reveal">
+                <a href="#projects" class="btn btn-filled">View Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
         </div>
-      </div>
-      <div class="about-float"><div class="float-val">50+</div><div class="float-lbl"><span class="txt-ar">مشروع</span><span class="txt-en">Projects</span></div></div>
-    </div>
-    <div class="reveal">
-      <div class="s-tag"><span class="txt-ar">عني</span><span class="txt-en">About</span></div>
-      <h2 class="s-title"><span class="txt-ar">العقل اللي <span style="color:var(--pink2)">خلف</span> الفريمات</span><span class="txt-en">The mind <span style="color:var(--pink2)">behind</span> the frames</span></h2>
-      <p class="about-bio"><span class="txt-ar">أنا <strong>Pradox</strong>، متخصص في موشن جرافيك ومونتاج فيديو احترافي.<br><br>بشتغل على تحويل الأفكار لمحتوى بصري يفرق فعلاً — كل مشروع بيتعمل بتفكير وإحساس وتفاصيل دقيقة. مش بس شغل، ده <strong>حرفة</strong>.</span><span class="txt-en">I'm <strong>Pradox</strong>, a motion graphic designer & professional video editor.<br><br>I turn ideas into visuals that actually matter — every project is built with intention, emotion, and sharp attention to detail. This isn't just work, it's a <strong>craft</strong>.</span></p>
-      <a href="#contact" class="btn-glow"><span><span class="txt-ar">اشتغل معايا</span><span class="txt-en">Work With Me</span></span></a>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- COLOR GRADING -->
-<section id="grading">
-  <div class="s-tag"><span class="txt-ar">كولور جريدينج</span><span class="txt-en">Color Grading</span></div>
-  <h2 class="s-title"><span class="txt-ar">أنماط <span style="color:var(--pink2)">التلوين</span></span><span class="txt-en">GRADING <span style="color:var(--pink2)">STYLES</span></span></h2>
-  <p class="grading-intro reveal"><span class="txt-ar">بقدر أعطي فيديوهاتك أي جو بصري تحبه — من الدافي السينمائي للبارد الحديث أو المووي الغامق.</span><span class="txt-en">I can give your videos any visual mood — from warm cinematic to cool modern or deep moody.</span></p>
-  <div class="grading-grid">
-    <div class="grade-card reveal"><div class="grade-swatch grade-warm"><div class="grade-label"><div class="grade-name">WARM CINEMA</div><div class="grade-sub"><span class="txt-ar">دافي سينمائي</span><span class="txt-en">Golden hour feel</span></div></div></div><div class="grade-info"><p class="grade-desc"><span class="txt-ar">ألوان دهبية ودافية — مثالي للإعلانات والمحتوى العاطفي.</span><span class="txt-en">Golden warm tones — perfect for ads and emotional content.</span></p></div></div>
-    <div class="grade-card reveal"><div class="grade-swatch grade-moody"><div class="grade-label"><div class="grade-name">MOODY PURPLE</div><div class="grade-sub"><span class="txt-ar">بنفسجي غامق</span><span class="txt-en">Dark & dramatic</span></div></div></div><div class="grade-info"><p class="grade-desc"><span class="txt-ar">بنفسجي غامق ودرامي — للمحتوى القوي والمشاهد الليلية.</span><span class="txt-en">Deep purple & dramatic — for powerful content and night scenes.</span></p></div></div>
-    <div class="grade-card reveal"><div class="grade-swatch grade-cold"><div class="grade-label"><div class="grade-name">COLD STEEL</div><div class="grade-sub"><span class="txt-ar">بارد وعصري</span><span class="txt-en">Cool & modern</span></div></div></div><div class="grade-info"><p class="grade-desc"><span class="txt-ar">ألوان باردة وزرقاء — للمحتوى التقني والحديث.</span><span class="txt-en">Cool blue tones — ideal for tech and modern content.</span></p></div></div>
-    <div class="grade-card reveal"><div class="grade-swatch grade-sunset"><div class="grade-label"><div class="grade-name">SUNSET PINK</div><div class="grade-sub"><span class="txt-ar">غروب وردي</span><span class="txt-en">Vibrant & bold</span></div></div></div><div class="grade-info"><p class="grade-desc"><span class="txt-ar">تدرج من البنفسجي للبينك — جذاب وحيوي لمحتوى السوشيال.</span><span class="txt-en">Purple-to-pink gradient — vibrant for social content.</span></p></div></div>
-    <div class="grade-card reveal"><div class="grade-swatch grade-noir"><div class="grade-label"><div class="grade-name">NOIR B&W</div><div class="grade-sub"><span class="txt-ar">أسود وأبيض</span><span class="txt-en">Timeless classic</span></div></div></div><div class="grade-info"><p class="grade-desc"><span class="txt-ar">أبيض وأسود كلاسيكي — يضيف عمق وطابع سينمائي خالد.</span><span class="txt-en">Classic monochrome — timeless depth and cinematic character.</span></p></div></div>
-    <div class="grade-card reveal"><div class="grade-swatch grade-neon"><div class="grade-label"><div class="grade-name">NEON DARK</div><div class="grade-sub"><span class="txt-ar">نيون غامق</span><span class="txt-en">Futuristic glow</span></div></div></div><div class="grade-info"><p class="grade-desc"><span class="txt-ar">نيون بنفسجي غامق — مستقبلي وعصري للموشن جرافيك.</span><span class="txt-en">Dark neon purple — futuristic and modern for motion work.</span></p></div></div>
-  </div>
-</section>
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title reveal"><span class="gradient-text">My Featured Projects</span></h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card reveal">
+                    <div class="project-img">🚀</div>
+                    <h3>E-Commerce Platform</h3>
+                    <div class="rating">
+                        ★★★★☆ <span class="review-count">4.8 · 120 reviews</span>
+                    </div>
+                    <div class="tech-badges">
+                        <span class="badge badge-purple">React</span>
+                        <span class="badge badge-cyan">Node.js</span>
+                        <span class="badge badge-pink">MongoDB</span>
+                    </div>
+                    <div class="project-btns">
+                        <a href="#" class="btn btn-filled">Live Demo</a>
+                        <a href="#" class="btn btn-outline">GitHub</a>
+                    </div>
+                </div>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="s-tag"><span class="txt-ar">خدماتي</span><span class="txt-en">Services</span></div>
-  <h2 class="s-title"><span class="txt-ar">إيه اللي <span style="color:var(--pink2)">بعمله</span></span><span class="txt-en">WHAT I <span style="color:var(--pink2)">DO</span></span></h2>
-  <div class="services-grid">
-    <div class="svc-card reveal"><span class="svc-icon">✦</span><div class="svc-n">01</div><div class="svc-title"><span class="txt-ar">موشن جرافيك</span><span class="txt-en">Motion Graphic</span></div><p class="svc-desc"><span class="txt-ar">تصميم موشن جرافيك متحرك للإعلانات، المحتوى الرقمي، والعروض التقديمية.</span><span class="txt-en">Animated motion graphics for ads, digital content & presentations.</span></p></div>
-    <div class="svc-card reveal"><span class="svc-icon">◈</span><div class="svc-n">02</div><div class="svc-title"><span class="txt-ar">مونتاج فيديو</span><span class="txt-en">Video Editing</span></div><p class="svc-desc"><span class="txt-ar">مونتاج احترافي لكل أنواع المحتوى — يوتيوب، ريلز، إعلانات.</span><span class="txt-en">Pro editing for all content — YouTube, Reels, ads, or any project.</span></p></div>
-    <div class="svc-card reveal"><span class="svc-icon">⬡</span><div class="svc-n">03</div><div class="svc-title"><span class="txt-ar">كولور جريدينج</span><span class="txt-en">Color Grading</span></div><p class="svc-desc"><span class="txt-ar">تلوين سينمائي يمنح فيديوهاتك الإحساس البصري المطلوب.</span><span class="txt-en">Cinematic grading that gives your video the right feel.</span></p></div>
-  </div>
-</section>
+                <!-- Project 2 -->
+                <div class="project-card reveal">
+                    <div class="project-img">📊</div>
+                    <h3>SaaS Dashboard</h3>
+                    <div class="rating">
+                        ★★★★★ <span class="review-count">5.0 · 85 reviews</span>
+                    </div>
+                    <div class="tech-badges">
+                        <span class="badge badge-cyan">TypeScript</span>
+                        <span class="badge badge-gold">Next.js</span>
+                        <span class="badge badge-purple">PostgreSQL</span>
+                    </div>
+                    <div class="project-btns">
+                        <a href="#" class="btn btn-filled">Live Demo</a>
+                        <a href="#" class="btn btn-outline">GitHub</a>
+                    </div>
+                </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="s-tag" style="justify-content:center"><span class="txt-ar">تواصل</span><span class="txt-en">Contact</span></div>
-    <h2 class="contact-cta reveal"><span class="txt-ar">خلينا نعمل <span>حاجة تتكلم</span></span><span class="txt-en">Let's make <span>something great</span></span></h2>
-    <p class="contact-sub reveal"><span class="txt-ar">عندك مشروع أو فكرة؟ تواصل معايا وخلينا نشتغل مع بعض</span><span class="txt-en">Got a project or idea? Reach out and let's create together.</span></p>
-    <div class="contact-btns reveal">
-      <a href="https://wa.me/YOUR_NUMBER" class="c-btn" target="_blank"><span class="c-icon">📱</span> WhatsApp</a>
-      <a href="https://instagram.com/YOUR_HANDLE" class="c-btn" target="_blank"><span class="c-icon">📸</span> Instagram</a>
-      <a href="/cdn-cgi/l/email-protection#2970667c7b696c64686065074a4644" class="c-btn"><span class="c-icon">✉️</span> Email</a>
-      <a href="https://youtube.com/@YOUR_CHANNEL" class="c-btn" target="_blank"><span class="c-icon">▶️</span> YouTube</a>
-    </div>
-  </div>
-</section>
+                <!-- Project 3 -->
+                <div class="project-card reveal">
+                    <div class="project-img">🎨</div>
+                    <h3>Creative Portfolio</h3>
+                    <div class="rating">
+                        ★★★★☆ <span class="review-count">4.5 · 45 reviews</span>
+                    </div>
+                    <div class="tech-badges">
+                        <span class="badge badge-pink">GSAP</span>
+                        <span class="badge badge-cyan">Three.js</span>
+                        <span class="badge badge-gold">WebGl</span>
+                    </div>
+                    <div class="project-btns">
+                        <a href="#" class="btn btn-filled">Live Demo</a>
+                        <a href="#" class="btn btn-outline">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  <div class="f-logo">PRADOX <em>MG</em></div>
-  <div class="f-copy">© 2025 PRADOX MOTION GRAPHIC</div>
-</footer>
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title reveal"><span class="gradient-text">My Tech Stack</span></h2>
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card reveal">
+                    <div class="skill-icon">🌐</div>
+                    <span class="skill-name">HTML5 / CSS3</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
 
-<!-- WATCH MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-bg" onclick="closeModal()"></div>
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕ <span class="txt-ar">إغلاق</span><span class="txt-en">Close</span></button>
-    <iframe id="modalFrame" src="" allowfullscreen allow="autoplay; fullscreen" style="display:none"></iframe>
-    <video id="modalVid" controls style="display:none;width:100%;height:100%;border-radius:10px;"></video>
-  </div>
-</div>
+                <!-- Skill 2 -->
+                <div class="skill-card reveal">
+                    <div class="skill-icon">JS</div>
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
 
-<!-- admin modal removed - now using full panel -->
+                <!-- Skill 3 -->
+                <div class="skill-card reveal">
+                    <div class="skill-icon">⚛️</div>
+                    <span class="skill-name">React / Next.js</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%;"></div>
+                    </div>
+                </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// cursor disabled
-function attachCursorHover(el){
-  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';cur.style.background='var(--p3)';ring.style.transform='scale(.5)';ring.style.opacity='0';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';cur.style.background='var(--pink2)';ring.style.transform='scale(1)';ring.style.opacity='1';});
-}
-document.querySelectorAll('a,button,.vid-card,.add-card').forEach(attachCursorHover);
+                <!-- Skill 4 -->
+                <div class="skill-card reveal">
+                    <div class="skill-icon">🟢</div>
+                    <span class="skill-name">Node.js</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
 
-// ── RIPPLE
-document.addEventListener('click',e=>{const r=document.createElement('div');r.className='ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.appendChild(r);setTimeout(()=>r.remove(),600);});
+                <!-- Skill 5 -->
+                <div class="skill-card reveal">
+                    <div class="skill-icon">🔷</div>
+                    <span class="skill-name">TypeScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 82%;"></div>
+                    </div>
+                </div>
 
-// ── LANG
-function toggleLang(){const h=document.documentElement;h.lang=h.lang==='ar'?'en':'ar';h.dir=h.lang==='ar'?'rtl':'ltr';}
+                <!-- Skill 6 -->
+                <div class="skill-card reveal">
+                    <div class="skill-icon">📁</div>
+                    <span class="skill-name">Git / GitHub</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// ── REVEAL
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
-document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title reveal"><span class="gradient-text">Get In Touch</span></h2>
+            <div class="contact-content">
+                <div class="contact-info reveal">
+                    <h3>Let's talk about your project</h3>
+                    <p>I'm always open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">📧</a>
+                        <a href="#" class="social-icon">🐙</a>
+                        <a href="#" class="social-icon">💼</a>
+                    </div>
+                </div>
+                <form class="contact-form reveal">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-filled">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-// ── ADMIN
-let ADMIN_PASS = localStorage.getItem('adminPass')||'pradox2025';
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DevPortfolio. All rights reserved.</p>
+        </div>
+    </footer>
 
-function askAdminPass(){
-  const pw=prompt('🔐 كلمة السر:');
-  if(pw===ADMIN_PASS){
-    openAdminPanel();
-  }else if(pw!==null){
-    alert('❌ كلمة السر غلط');
-  }
-}
-document.addEventListener('keydown',e=>{
-  if(e.ctrlKey&&e.altKey&&e.key==='A') askAdminPass();
-});
-function openAdminPanel(){
-  document.getElementById('adminPanel').classList.add('open');
-  document.body.style.overflow='hidden';
-  renderProjList();
-  loadTextsToAdmin();
-}
-function closeAdminPanel(){
-  document.getElementById('adminPanel').classList.remove('open');
-  document.body.style.overflow='';
-}
-function admTab(name){
-  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.adm-section').forEach(s=>s.classList.remove('active'));
-  document.querySelector(`[onclick="admTab('${name}')"]`).classList.add('active');
-  document.getElementById('tab-'+name).classList.add('active');
-}
+    <script>
+        // Reveal animation on scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        reveal();
 
-// ── CARDS DATA
-const cardData={};
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
-// ═══════════════════════════════════════════
-// 👇 هنا بتحط روابط الفيديوهات بتاعتك
-// ═══════════════════════════════════════════
-// cardData['vc1']={type:'yt', src:'VIDEO_ID'};
-// cardData['vc2']={type:'streamable', src:'CODE'};
-// cardData['vc3']={type:'gdrive', src:'FILE_ID'};
-cardData['vc1']={type:'streamable', src:'h4czb1'};
-// ═══════════════════════════════════════════
+        menuToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'var(--bg-color)';
+                navLinks.style.padding = '20px';
+                navLinks.style.borderBottom = '1px solid var(--primary-purple)';
+            }
+        });
 
-function cardClick(id){
-  const d=cardData[id];
-  if(!d){return;}
-  const card=document.getElementById(id);
-  const title=card?card.querySelector('.vid-title')?.textContent||'PROJECT':'PROJECT';
-  const cat=card?card.querySelector('.vid-cat .txt-ar')?.textContent||'':'';
-  const url=`watch.html?type=${d.type}&src=${encodeURIComponent(d.src)}&title=${encodeURIComponent(title)}&cat=${encodeURIComponent(cat)}`;
-  window.open(url,'_blank');
-}
-
-// ── PARSE VIDEO URL
-function parseVideoUrl(url){
-  url=url.trim();
-  let m;
-  m=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  if(m)return{type:'yt',id:m[1]};
-  m=url.match(/vimeo\.com\/(\d+)/);
-  if(m)return{type:'vimeo',id:m[1]};
-  m=url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
-  if(m)return{type:'gdrive',id:m[1]};
-  m=url.match(/streamable\.com\/([a-z0-9]+)(?:\?.*)?$/);
-  if(m)return{type:'streamable',id:m[1]};
-  if(url.match(/\.(mp4|webm|mov)(\?|$)/i))return{type:'direct',id:url};
-  return{type:'iframe',id:url};
-}
-
-function getVideoThumb(type,id){
-  if(type==='yt') return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-  return null;
-}
-
-// ── WATCH MODAL
-function openModal(type,id){
-  const modal=document.getElementById('modal'),frame=document.getElementById('modalFrame'),vid=document.getElementById('modalVid');
-  frame.style.display='none';vid.style.display='none';
-  const box=document.querySelector('.modal-box');
-  box.style.aspectRatio='';
-  let src='';
-  if(type==='yt'){src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';box.style.aspectRatio='16/9';}
-  else if(type==='vimeo'){src='https://player.vimeo.com/video/'+id+'?autoplay=1';box.style.aspectRatio='16/9';}
-  else if(type==='gdrive'){src='https://drive.google.com/file/d/'+id+'/preview';}
-  else if(type==='streamable'){src='https://streamable.com/e/'+id;box.style.aspectRatio='16/9';}
-  else if(type==='iframe'){src=id;}
-  if(type==='direct'||type==='local'){vid.src=id;vid.style.display='block';vid.style.maxHeight='85vh';vid.play();}
-  else{frame.src=src;frame.style.display='block';frame.style.minHeight='400px';}
-  modal.classList.add('open');
-  document.body.style.overflow='hidden';
-  // ── تجميد الصفحة ورا الفيديو
-  document.querySelectorAll('nav,section,footer,.blob-wrap').forEach(el=>{
-    el.style.visibility='hidden';
-    el.style.animationPlayState='paused';
-  });
-  document.querySelectorAll('*').forEach(el=>{
-    const s=el.style;
-    if(s.animationPlayState!==undefined) s.animationPlayState='paused';
-  });
-}
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-  document.getElementById('modalFrame').src='';
-  const v=document.getElementById('modalVid');v.pause();v.src='';
-  document.body.style.overflow='';
-  // ── إرجاع الصفحة
-  document.querySelectorAll('nav,section,footer,.blob-wrap').forEach(el=>{
-    el.style.visibility='';
-    el.style.animationPlayState='';
-  });
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeAdminPanel();}});
-
-// ── ADMIN: ADD PROJECT
-let cardCount=3;
-function admAddProject(){
-  const url=document.getElementById('new-url').value.trim();
-  const title=document.getElementById('new-title').value.trim()||'NEW PROJECT';
-  const catVal=document.getElementById('new-cat').value;
-  const desc=document.getElementById('new-desc').value.trim();
-  if(!url){alert('ضع رابط الفيديو');return;}
-  const parsed=parseVideoUrl(url);
-  cardCount++;
-  const cid='vc'+cardCount;
-  const[catAr,catEn]=catVal.split('|');
-  const thumb=getVideoThumb(parsed.type,parsed.id);
-  const thumbHtml=thumb?`<img src="${thumb}" class="vid-thumb" alt="" loading="lazy"/>`:`<div class="public-placeholder"><div class="pub-icon">▶</div></div>`;
-  const html=`<div class="vid-card reveal visible" id="${cid}" onclick="cardClick('${cid}')">
-    <div class="vid-wrap">${thumbHtml}<div class="play-ring"></div><div class="vid-overlay"></div></div>
-    <div class="vid-info">
-      <div class="vid-cat"><span class="txt-ar">${catAr}</span><span class="txt-en">${catEn}</span></div>
-      <div class="vid-title">${title.toUpperCase()}</div>
-      <div class="vid-desc"><span class="txt-ar">${desc||'مشروع جديد'}</span><span class="txt-en">${desc||'New project'}</span></div>
-    </div>
-  </div>`;
-  const addCard=document.querySelector('.add-card');
-  if(addCard) addCard.insertAdjacentHTML('beforebegin',html);
-  else document.getElementById('worksGrid').insertAdjacentHTML('beforeend',html);
-  cardData[cid]={type:parsed.type,src:parsed.id,url:url,title:title,catAr:catAr,catEn:catEn,desc:desc};
-  attachCursorHover(document.getElementById(cid));
-  document.getElementById('new-url').value='';
-  document.getElementById('new-title').value='';
-  document.getElementById('new-desc').value='';
-  renderProjList();
-  alert('✅ اتضاف المشروع');
-}
-
-// ── ADMIN: PROJECT LIST
-function renderProjList(){
-  const list=document.getElementById('projList');
-  if(!list) return;
-  const ids=[];
-  document.querySelectorAll('.vid-card:not(.add-card)').forEach(c=>ids.push(c.id));
-  if(!ids.length){list.innerHTML='<p style="color:#7264a0;font-size:.8rem;">مفيش مشاريع لسه</p>';return;}
-  list.innerHTML=ids.map(id=>{
-    const card=document.getElementById(id);
-    const t=card?card.querySelector('.vid-title')?.textContent:'';
-    const d=cardData[id];
-    const urlShow=d?d.url||'':'';
-    return `<div class="proj-item">
-      <div class="proj-item-info">
-        <div class="proj-item-title">${t}</div>
-        <div class="proj-item-url">${urlShow||'بدون رابط'}</div>
-      </div>
-      <div class="proj-item-actions">
-        <button class="adm-btn-sec" onclick="admEditProject('${id}')">✏️ تعديل</button>
-        <button class="adm-btn-del" onclick="admDeleteProject('${id}')">🗑 حذف</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-function admDeleteProject(id){
-  if(!confirm('هتحذف المشروع؟')) return;
-  const el=document.getElementById(id);
-  if(el) el.remove();
-  delete cardData[id];
-  renderProjList();
-}
-function admEditProject(id){
-  const d=cardData[id];
-  const card=document.getElementById(id);
-  if(!card) return;
-  const newUrl=prompt('الرابط الجديد (اتركه فاضي لو مش عايز تغيره):',d?.url||'');
-  if(newUrl===null) return;
-  const newTitle=prompt('اسم المشروع:',card.querySelector('.vid-title')?.textContent||'');
-  if(newTitle===null) return;
-  const newDesc=prompt('الوصف:',card.querySelector('.vid-desc .txt-ar')?.textContent||'');
-  if(newTitle) card.querySelector('.vid-title').textContent=newTitle.toUpperCase();
-  if(newDesc){
-    const descEl=card.querySelector('.vid-desc');
-    if(descEl) descEl.innerHTML=`<span class="txt-ar">${newDesc}</span><span class="txt-en">${newDesc}</span>`;
-  }
-  if(newUrl&&newUrl.trim()){
-    const parsed=parseVideoUrl(newUrl);
-    cardData[id]={...cardData[id],type:parsed.type,src:parsed.id,url:newUrl};
-    card.onclick=()=>cardClick(id);
-    // update thumb if youtube
-    const thumb=getVideoThumb(parsed.type,parsed.id);
-    if(thumb){
-      let img=card.querySelector('.vid-thumb');
-      if(!img){img=document.createElement('img');img.className='vid-thumb';img.loading='lazy';card.querySelector('.vid-wrap').prepend(img);}
-      img.src=thumb;
-      const ph=card.querySelector('.public-placeholder');
-      if(ph) ph.remove();
-    }
-  }
-  renderProjList();
-  alert('✅ اتعدّل');
-}
-
-// ── ADMIN: TEXTS
-function loadTextsToAdmin(){
-  const eyebrow=document.querySelector('.hero-eyebrow .txt-ar');
-  const herosub=document.querySelector('.hero-sub .txt-ar');
-  const bio=document.querySelector('.about-bio .txt-ar');
-  if(eyebrow) document.getElementById('txt-eyebrow').value=eyebrow.textContent;
-  if(herosub) document.getElementById('txt-herosub').value=herosub.textContent;
-  if(bio) document.getElementById('txt-bio').value=bio.textContent;
-  // stats
-  const stats=document.querySelectorAll('.stat-n');
-  if(stats[0]) document.getElementById('txt-s1').value=stats[0].textContent;
-  if(stats[1]) document.getElementById('txt-s2').value=stats[1].textContent;
-  if(stats[2]) document.getElementById('txt-s3').value=stats[2].textContent;
-  if(stats[3]) document.getElementById('txt-s4').value=stats[3].textContent;
-  // links
-  const wa=document.querySelector('a[href*="wa.me"]');
-  const ig=document.querySelector('a[href*="instagram"]');
-  const em=document.querySelector('a[href*="mailto"]');
-  const yt=document.querySelector('a[href*="youtube"]');
-  if(wa) document.getElementById('txt-wa').value=wa.href;
-  if(ig) document.getElementById('txt-ig').value=ig.href;
-  if(em) document.getElementById('txt-email').value=em.href.replace('mailto:','');
-  if(yt) document.getElementById('txt-yt').value=yt.href;
-}
-function admSaveTexts(){
-  const eyebrow=document.querySelector('.hero-eyebrow .txt-ar');
-  const herosub=document.querySelector('.hero-sub .txt-ar');
-  const bio=document.querySelector('.about-bio .txt-ar');
-  if(eyebrow) eyebrow.textContent=document.getElementById('txt-eyebrow').value;
-  if(herosub) herosub.textContent=document.getElementById('txt-herosub').value;
-  if(bio) bio.innerHTML=document.getElementById('txt-bio').value;
-  alert('✅ اتحفظ');
-}
-function admSaveStats(){
-  const stats=document.querySelectorAll('.stat-n');
-  if(stats[0]) stats[0].textContent=document.getElementById('txt-s1').value;
-  if(stats[1]) stats[1].textContent=document.getElementById('txt-s2').value;
-  if(stats[2]) stats[2].textContent=document.getElementById('txt-s3').value;
-  if(stats[3]) stats[3].textContent=document.getElementById('txt-s4').value;
-  alert('✅ اتحفظ');
-}
-function admSaveLinks(){
-  const wa=document.querySelector('a[href*="wa.me"]');
-  const ig=document.querySelector('a[href*="instagram"]');
-  const em=document.querySelector('a[href*="mailto"]');
-  const yt=document.querySelector('a[href*="youtube"]');
-  if(wa) wa.href=document.getElementById('txt-wa').value;
-  if(ig) ig.href=document.getElementById('txt-ig').value;
-  if(em) em.href='mailto:'+document.getElementById('txt-email').value;
-  if(yt) yt.href=document.getElementById('txt-yt').value;
-  alert('✅ اتحفظت الروابط');
-}
-function admChangePass(){
-  const np=document.getElementById('new-pass').value.trim();
-  if(!np){alert('اكتب كلمة السر الجديدة');return;}
-  ADMIN_PASS=np;
-  localStorage.setItem('adminPass',np);
-  alert('✅ اتغيرت كلمة السر');
-  document.getElementById('new-pass').value='';
-}
-
-// youtube thumbnail on existing cards with data
-document.querySelectorAll('.vid-card:not(.add-card)').forEach(card=>{
-  const id=card.id;
-  const d=cardData[id];
-  if(d&&d.type==='yt'){
-    const wrap=card.querySelector('.vid-wrap');
-    const ph=wrap.querySelector('.public-placeholder');
-    const img=document.createElement('img');
-    img.src=`https://img.youtube.com/vi/${d.src}/hqdefault.jpg`;
-    img.className='vid-thumb';img.loading='lazy';
-    img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
-    if(ph) ph.replaceWith(img); else wrap.prepend(img);
-  }
-});
-
-</script>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyCb5Auan7z00gBOH1179L8P-7HZsoWR_7o",
-  authDomain: "pradox-portfolio.firebaseapp.com",
-  projectId: "pradox-portfolio",
-  storageBucket: "pradox-portfolio.firebasestorage.app",
-  messagingSenderId: "714860051566",
-  appId: "1:714860051566:web:d4397fd4ec98476408fa7f",
-  measurementId: "G-PM7VRTNV3H"
-};
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-</script>
+        // Sticky Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '10px 0';
+                nav.style.background = 'rgba(10, 0, 16, 0.95)';
+            } else {
+                nav.style.padding = '20px 0';
+                nav.style.background = 'var(--glass-bg)';
+            }
+        });
+    </script>
 </body>
-</html>  
+</html>
